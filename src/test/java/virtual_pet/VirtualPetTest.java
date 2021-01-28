@@ -10,10 +10,7 @@ public class VirtualPetTest {
     //private void assertEquals(int expected, int num) {
 
 
-    @Test
-    public void shouldBeAbleToCreatePet() {
-        VirtualPet pet = new VirtualPet();
-    }
+
     @Test
     public void petShouldHaveName() {
         VirtualPet underTest = new VirtualPet("Ricardo");
@@ -148,4 +145,5 @@ public class VirtualPetTest {
         pet.water();
         int thirstAfterWatering = pet.getThirst();
     }
+
 }
