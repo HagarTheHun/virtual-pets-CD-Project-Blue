@@ -1,13 +1,14 @@
 package virtual_pet;
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VirtualPetTest {
 
-    private void assertEquals(String expected, String str) {
-    }
-    private void assertEquals(int expected, int num) {
-    }
+    //private void assertEquals(String expected, String str) {
+
+    //private void assertEquals(int expected, int num) {
+
 
     @Test
     public void shouldBeAbleToCreatePet() {
@@ -19,7 +20,7 @@ public class VirtualPetTest {
 
         String expected = underTest.getName();
 
-        assertEquals(expected, "Jeff");
+        assertEquals(expected, "Ricardo");
 
     }
 
@@ -38,6 +39,15 @@ public class VirtualPetTest {
         VirtualPet underTest = new VirtualPet("Lisa");
 
         int expected = underTest.getBoredom();
+
+        assertEquals(expected, 10);
+    }
+
+    @Test
+    public void shouldHaveDefaultThirst() {
+        VirtualPet underTest = new VirtualPet("Michelle");
+
+        int expected = underTest.getThirst();
 
         assertEquals(expected, 10);
     }
@@ -63,7 +73,7 @@ public class VirtualPetTest {
     }
 
     @Test
-    public void shouldTickBoredome() {
+    public void shouldTickBoredom() {
         VirtualPet pet = new VirtualPet("Eduardo");
 
         int initialBoredom = pet.getBoredom();
@@ -71,6 +81,17 @@ public class VirtualPetTest {
         int boredomAfterTick = pet.getBoredom();
 
         assertEquals(initialBoredom + 10, boredomAfterTick);
+    }
+
+    @Test
+    public void shouldTickThirst(){
+        VirtualPet pet = new VirtualPet("Weiwei");
+
+        int initialThirst = pet.getThirst();
+        pet.tick();
+        int thirstAfterTick = pet.getThirst();
+
+        assertEquals(initialThirst+10, thirstAfterTick);
     }
 
     @Test
@@ -82,6 +103,49 @@ public class VirtualPetTest {
         pet.feed();
         int hungerAfterFeeding = pet.getHunger();
 
-        assertEquals(originalHunger - 10, hungerAfterFeeding);
+        assertEquals(originalHunger, hungerAfterFeeding);
+    }
+
+    @Test
+    public void doesPlayDecreaseBoredom(){
+        VirtualPet pet = new VirtualPet("Jelanie");
+
+        int originalBoredom = pet.getBoredom();
+        pet.tick();
+        pet.play();
+        int boredomAfterPlaying = pet.getBoredom();
+
+        assertEquals(originalBoredom, boredomAfterPlaying);
+    }
+
+    @Test
+    public void hungerOverZero(){
+        VirtualPet pet = new VirtualPet("Connor");
+
+        pet.feed();
+        pet.feed();
+        int hungerAfterFeeding = pet.getHunger();
+
+        assertEquals(0, hungerAfterFeeding);
+    }
+
+    @Test
+    public void boredomOverZero(){
+        VirtualPet pet = new VirtualPet("Cliff");
+
+        pet.play();
+        pet.play();
+        int boredomAfterPlaying = pet.getBoredom();
+
+        assertEquals(0, boredomAfterPlaying);
+    }
+
+    @Test
+    public void thirstOverZero(){
+        VirtualPet pet = new VirtualPet("Fathi");
+
+        pet.water();
+        pet.water();
+        int thirstAfterWatering = pet.getThirst();
     }
 }
