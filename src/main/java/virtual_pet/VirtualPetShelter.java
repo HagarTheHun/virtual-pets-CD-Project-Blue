@@ -6,18 +6,22 @@ import java.util.Map;
 
 public class VirtualPetShelter {
    private String name;
+   Map<String, VirtualPet> creatures = new HashMap<>();
 
    public VirtualPetShelter(String name){
-      Map<String, VirtualPet> creatures = new HashMap<String, VirtualPet>();
-      VirtualPet auto1 = new VirtualPet("Otto");
       this.name = name;
-      creatures.put(auto1.getName(), auto1);
+   }
 
+   public void takeIn(VirtualPet pet) {
+      creatures.put(pet.getName(), pet);
+   }
 
-   }   // Map<String,String,Integer,Integer,Integer> creatures = new HashMap<String,String,Integer,Integer,Integer>();
-
-   public String getName() {
+   public String getNameOfShelter() {
       return name;
+   }
+
+   public VirtualPet seePet(String petName){
+      return creatures.get(petName);
    }
 }
 
