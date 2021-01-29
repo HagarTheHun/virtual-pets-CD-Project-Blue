@@ -35,7 +35,7 @@ public class VirtualPetShelter {
    }
 
    public void feedShelter(){
-      creatures.forEach();
+      creatures.forEach(<String, VirtualPet>: VirtualPet.feed());
 
    }
 
