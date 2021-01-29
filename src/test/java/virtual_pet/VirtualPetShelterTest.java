@@ -5,11 +5,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class VirtualPetShelterTest {
-    @Test
+    /*@Test
     public void hasConstructor() {
-        VirtualPetShelter shelter = new VirtualPetShelter();
+        VirtualPetShelter shelter = new VirtualPetShelter("Goodie's Good Boys");
 
 
 
+    }*/
+
+    @Test
+    public void hasShelterName() {
+        VirtualPetShelter shelter = new VirtualPetShelter("Goodie's Good Boys");
+
+        String expected = shelter.getName();
+
+        assertEquals(expected, "Goodie's Good Boys");
     }
 }
