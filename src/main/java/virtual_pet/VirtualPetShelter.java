@@ -1,5 +1,6 @@
 package virtual_pet;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 import java.util.Map;
@@ -23,5 +24,21 @@ public class VirtualPetShelter {
    public VirtualPet seePet(String petName){
       return creatures.get(petName);
    }
+
+   public void adoptPet(String petName) {
+      creatures.remove(petName);
+   }
+
+   public Collection<VirtualPet> retrieveAllPets() {
+      return creatures.values();
+      //creatures.forEach();
+   }
+
+   public void feedShelter(){
+      creatures.forEach();
+
+   }
+
+
 }
 

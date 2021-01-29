@@ -1,9 +1,10 @@
 package virtual_pet;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import java.util.Collection;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class VirtualPetShelterTest {
@@ -42,10 +43,28 @@ public class VirtualPetShelterTest {
         VirtualPetShelter shelter = new VirtualPetShelter("The Haven");
         shelter.takeIn(underTest1);
         shelter.takeIn(underTest2);
-        shelter.adoptPet(underTest1);
+        shelter.adoptPet(underTest1.getName());
 
-        boolean isFalse = false;
+        Collection<VirtualPet> retrievePets = shelter.retrieveAllPets();
 
-        assertFalse();
+        assertFalse(retrievePets.contains(underTest1));
+    }
+
+    @Test
+    public void shouldFeedShelter(){
+        VirtualPet underTest1 = new VirtualPet("John");
+        VirtualPet underTest2 = new VirtualPet("Jane");
+        VirtualPetShelter shelter = new VirtualPetShelter("The Haven");
+
+        int beforeFed1 = underTest1.getHunger();
+        int beforeFed2 = underTest2.getHunger();
+
+        shelter.feedShelter();
+
+        assertTrue(beforeFed1> underTest1.getHunger());
+        assertTrue(beforeFed2> underTest2.getHunger());
+
     }
 }
+//TO DO: Feed, play, water, clean for multiple pets
+//       Display table with all pets and their attributes
