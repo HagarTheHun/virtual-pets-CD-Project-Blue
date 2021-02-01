@@ -147,3 +147,14 @@ public class VirtualPetTest {
     }
 
 }
+
+/* Support for 4 types of pets: Organic Cats, Organic Dogs, Robotic Cats, Robotic Dogs.
+Robots require oil and maintenance.
+Organic cats and dogs require cage & litter box cleaning.
+Allow users to take dogs on walks.
+Walking organic pets decreases the rate at which they soil their cages/litter boxes.
+Walking robotic pets increases their need for oil and maintenance. */
+
+//have two classes for organic and robotic
+//robotic class will inherit virtual pet but will change food to oil and instead of clean- maintenance!
+

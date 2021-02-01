@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 
 import java.util.Map;
+import java.util.function.BiConsumer;
 
 public class VirtualPetShelter {
    private String name;
@@ -35,7 +36,12 @@ public class VirtualPetShelter {
    }
 
    public void feedShelter(){
-      creatures.forEach(<String, VirtualPet>: VirtualPet.feed());
+      creatures.forEach(new BiConsumer<String, VirtualPet>() {
+         @Override
+         public void accept(String s, VirtualPet virtualPet) {
+          virtualPet.feed();
+         }
+      }
 
    }
 

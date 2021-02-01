@@ -64,6 +64,12 @@ public class VirtualPetShelterTest {
         assertTrue(beforeFed1> underTest1.getHunger());
         assertTrue(beforeFed2> underTest2.getHunger());
 
+    @Test
+        void adoptOut() {
+        VirtualPetShelter underTest = new VirtualPetShelter();
+        VirtualPet
+        }
+
     }
 }
 //TO DO: Feed, play, water, clean for multiple pets
