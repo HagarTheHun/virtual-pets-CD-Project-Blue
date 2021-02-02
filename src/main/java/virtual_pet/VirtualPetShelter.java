@@ -14,9 +14,7 @@ public class VirtualPetShelter {
       this.name = name;
    }
 
-   public void takeIn(VirtualPet pet) { //Puts VirtualPet into Shelter
-      creatures.put(pet.getName(), pet);
-   }
+
 
    public String getNameOfShelter() {  // Name getter
       return name;
@@ -26,6 +24,10 @@ public class VirtualPetShelter {
       return creatures.get(petName);
    }
 
+   public void takeIn(VirtualPet pet) { //Puts VirtualPet into Shelter
+      creatures.put(pet.getName(), pet);
+   }
+    
    public void adoptPet(String petName) {
       creatures.remove(petName);
    }

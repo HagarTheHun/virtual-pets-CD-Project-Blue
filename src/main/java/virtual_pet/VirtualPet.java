@@ -36,6 +36,9 @@ public class VirtualPet {
     public String getColor() {
         return color;
     }
+    public String returnPetStatus() {
+        return String.format("| %-10s |  %3d   |  %3d   |   %3d   |", this.getName(), this.getHunger(), this.getThirst(), this.getBoredom());
+    }
 
     public void tick() {
         hunger = hunger + 10;
@@ -64,9 +67,7 @@ public class VirtualPet {
         }
     }
 
-    public String returnPetStatus() {
-        return String.format("| %-10s |  %3d   |  %3d   |   %3d   |", this.getName(), this.getHunger(), this.getThirst(), this.getBoredom());
-    }
+
 }
 
 

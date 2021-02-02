@@ -7,12 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VirtualPetTest {
 
-    //private void assertEquals(String expected, String str) {
-
-    //private void assertEquals(int expected, int num) {
-
-
-
     @Test
     public void petShouldHaveName() {
         VirtualPet underTest = new VirtualPet("Ricardo");
@@ -22,7 +16,6 @@ public class VirtualPetTest {
         assertEquals(expected, "Ricardo");
 
     }
-
 
     @Test
     public void shouldHaveDefaultHunger() {
@@ -119,42 +112,41 @@ public class VirtualPetTest {
     }
 
     @Test
-    public void hungerOverZero(){
+    public void hungerNotNegative(){
         VirtualPet pet = new VirtualPet("Connor");
 
         pet.feed();
         pet.feed();
+
         int hungerAfterFeeding = pet.getHunger();
 
         assertEquals(0, hungerAfterFeeding);
     }
 
     @Test
-    public void boredomOverZero(){
+    public void boredomNotNegative(){
         VirtualPet pet = new VirtualPet("Cliff");
 
         pet.play();
         pet.play();
+
         int boredomAfterPlaying = pet.getBoredom();
 
         assertEquals(0, boredomAfterPlaying);
     }
 
     @Test
-    public void thirstOverZero(){
+    public void thirstNotNegative(){
         VirtualPet pet = new VirtualPet("Fathi");
 
         pet.water();
         pet.water();
+
         int thirstAfterWatering = pet.getThirst();
+
+        assertEquals(0, thirstAfterWatering);
     }
 
-//    @Test
-//    public void stringFormatOutputVerification(){
-//        VirtualPet testPet = new VirtualPet("Bosco");
-//        String statusLine = String.format("| %-10s | %3d |", testPet.getName(), testPet.getHunger());
-//        assertThat(statusLine).isEqualTo("| Bosco      |  10 |");
-//    }
     @Test
     public void canReturnPetStatus () {
         VirtualPet testPet = new VirtualPet("Bosco");
@@ -163,13 +155,13 @@ public class VirtualPetTest {
     }
 }
 
-/* Support for 4 types of pets: Organic Cats, Organic Dogs, Robotic Cats, Robotic Dogs.
+/* SPRINT 3
+Support for 4 types of pets: Organic Cats, Organic Dogs, Robotic Cats, Robotic Dogs.
 Robots require oil and maintenance.
 Organic cats and dogs require cage & litter box cleaning.
 Allow users to take dogs on walks.
 Walking organic pets decreases the rate at which they soil their cages/litter boxes.
 Walking robotic pets increases their need for oil and maintenance. */
 
-//have two classes for organic and robotic
 //robotic class will inherit virtual pet but will change food to oil and instead of clean- maintenance!
 

@@ -9,13 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class VirtualPetShelterTest {
-    /*@Test
-    public void hasConstructor() {
-        VirtualPetShelter shelter = new VirtualPetShelter("Goodie's Good Boys");
-
-
-
-    }*/
 
     @Test
     public void hasShelterName() {
@@ -69,8 +62,7 @@ public class VirtualPetShelterTest {
         assertTrue(beforeFed1> underTest1.getHunger());
         assertTrue(beforeFed2> underTest2.getHunger());
 
-//        System.out.println(beforeFed1 + ">" + underTest1.getHunger());
-//        System.out.println(beforeFed2 + ">" + underTest2.getHunger());
+
     }
 
     @Test
