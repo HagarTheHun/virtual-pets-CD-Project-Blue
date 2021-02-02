@@ -35,16 +35,19 @@ public class VirtualPetShelter {
       //creatures.forEach();
    }
 
-   public void feedShelter(){
-      creatures.forEach(new BiConsumer<String, VirtualPet>() {
-         @Override
-         public void accept(String s, VirtualPet virtualPet) {
-          virtualPet.feed();
-         }
-      }
+   public void feedAllPets(){
+     for (Map.Entry <String,VirtualPet> entry: creatures.entrySet()) {
+        entry.getValue().feed();}
+     }
+
+
+
+          // need to iterate through map for shelter
+
+
 
    }
 
 
-}
+
 

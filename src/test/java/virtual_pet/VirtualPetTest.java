@@ -96,11 +96,12 @@ public class VirtualPetTest {
         VirtualPet pet = new VirtualPet("Lana");
 
         int originalHunger = pet.getHunger();
-        pet.tick();
+
         pet.feed();
         int hungerAfterFeeding = pet.getHunger();
 
-        assertEquals(originalHunger, hungerAfterFeeding);
+        assertEquals(originalHunger, hungerAfterFeeding + 10);
+
     }
 
     @Test
