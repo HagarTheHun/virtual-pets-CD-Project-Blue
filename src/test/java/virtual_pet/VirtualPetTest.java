@@ -1,6 +1,8 @@
 package virtual_pet;
 
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VirtualPetTest {
@@ -147,6 +149,18 @@ public class VirtualPetTest {
         int thirstAfterWatering = pet.getThirst();
     }
 
+//    @Test
+//    public void stringFormatOutputVerification(){
+//        VirtualPet testPet = new VirtualPet("Bosco");
+//        String statusLine = String.format("| %-10s | %3d |", testPet.getName(), testPet.getHunger());
+//        assertThat(statusLine).isEqualTo("| Bosco      |  10 |");
+//    }
+    @Test
+    public void canReturnPetStatus () {
+        VirtualPet testPet = new VirtualPet("Bosco");
+        String statusLine = testPet.returnPetStatus();
+        assertThat(statusLine).isEqualTo("| Bosco      |   10   |   10   |    10   |");
+    }
 }
 
 /* Support for 4 types of pets: Organic Cats, Organic Dogs, Robotic Cats, Robotic Dogs.

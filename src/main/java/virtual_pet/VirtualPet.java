@@ -63,6 +63,10 @@ public class VirtualPet {
             thirst=0;
         }
     }
+
+    public String returnPetStatus() {
+        return String.format("| %-10s |  %3d   |  %3d   |   %3d   |", this.getName(), this.getHunger(), this.getThirst(), this.getBoredom());
+    }
 }
 
 

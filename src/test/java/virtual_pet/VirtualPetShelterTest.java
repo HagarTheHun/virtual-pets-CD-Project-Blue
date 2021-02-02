@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -31,10 +32,11 @@ public class VirtualPetShelterTest {
         VirtualPetShelter shelter = new VirtualPetShelter("Good Shelter");
         shelter.takeIn(underTest);
 
-        String expected = shelter.seePet("Doug").getName();
+        String expected = shelter.returnPet("Doug").getName();
 
         assertEquals("Doug", expected);
     }
+
 
     @Test
     public void takePetOutOfShelter(){
@@ -45,27 +47,47 @@ public class VirtualPetShelterTest {
         shelter.takeIn(underTest2);
         shelter.adoptPet(underTest1.getName());
 
-        Collection<VirtualPet> retrievePets = shelter.retrieveAllPets();
+        Collection<VirtualPet> retrievePets = shelter.returnAllPets();
 
         assertFalse(retrievePets.contains(underTest1));
     }
 
     @Test
-    public void shouldFeedShelter(){
+    public void shouldFeedShelter() {
         VirtualPet underTest1 = new VirtualPet("John");
         VirtualPet underTest2 = new VirtualPet("Jane");
         VirtualPetShelter shelter = new VirtualPetShelter("The Haven");
+
+        shelter.takeIn(underTest1);
+        shelter.takeIn(underTest2);
 
         int beforeFed1 = underTest1.getHunger();
         int beforeFed2 = underTest2.getHunger();
 
         shelter.feedAllPets();
 
-        //assertTrue(beforeFed1> underTest1.getHunger());
-        //assertTrue(beforeFed2> underTest2.getHunger());
+        assertTrue(beforeFed1> underTest1.getHunger());
+        assertTrue(beforeFed2> underTest2.getHunger());
 
-        System.out.println(beforeFed1 +">" + underTest1.getHunger());
-        System.out.println(beforeFed2 + ">" + underTest2.getHunger());
+//        System.out.println(beforeFed1 + ">" + underTest1.getHunger());
+//        System.out.println(beforeFed2 + ">" + underTest2.getHunger());
+    }
+
+    @Test
+    public void canSeeEntireShelter() {
+        VirtualPetShelter testShelter = new VirtualPetShelter("The Haven");
+        VirtualPet underTest1 = new VirtualPet("John");
+        VirtualPet underTest2 = new VirtualPet("Jane");
+
+        testShelter.takeIn(underTest1);
+        testShelter.takeIn(underTest2);
+
+        String shelterStatusTable = testShelter.viewShelterStatus();
+
+        assertThat(shelterStatusTable).isEqualTo("| NAME       | HUNGER | THIRST | BOREDOM |\n| John       |   10   |   10   |    10   |\n| Jane       |   10   |   10   |    10   |\n");
+
+    }
+
 
    //@Test
        // void adoptOut() {
@@ -73,7 +95,8 @@ public class VirtualPetShelterTest {
       //  VirtualPet
       //  }
 
-    }
+
 }
-//TO DO: Feed, play, water, clean for multiple pets
-//       Display table with all pets and their attributes
+//TO DO: Play, water, clean for multiple pets
+//       Make Organic and Robot extending VirtualPet
+//       Make OrganicDragon, OrganicUnicorn, RobotDragon, RobotUnicorn extending Organic or Robot
