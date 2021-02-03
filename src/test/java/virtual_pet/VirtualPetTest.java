@@ -1,9 +1,11 @@
 package virtual_pet;
 
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class VirtualPetTest {
 
@@ -42,6 +44,12 @@ public class VirtualPetTest {
         int expected = underTest.getThirst();
 
         assertEquals(expected, 10);
+    }
+    @Test
+    public void shouldHaveDefaultDirtiness(){
+        VirtualPet underTest = new VirtualPet("Jake");
+        int expected = underTest.getDirtiness();
+        assertEquals(expected, 0);
     }
 
     @Test
@@ -85,6 +93,16 @@ public class VirtualPetTest {
 
         assertEquals(initialThirst+10, thirstAfterTick);
     }
+    @Test
+    public void shouldTickDirtiness(){
+        VirtualPet pet = new VirtualPet("BMO");
+
+        int initialDirtiness = pet.getDirtiness();
+        pet.tick();
+        int dirtinessAfterTick = pet.getDirtiness();
+
+        assertEquals(initialDirtiness+10, dirtinessAfterTick);
+    }
 
     @Test
     public void doesFeedDecreaseHunger() {
@@ -109,6 +127,16 @@ public class VirtualPetTest {
         int boredomAfterPlaying = pet.getBoredom();
 
         assertEquals(originalBoredom, boredomAfterPlaying);
+    }
+    @Test
+    public void doesCleanDecreaseDirtiness(){
+        VirtualPet pet = new VirtualPet("Bubblegum");
+        pet.tick();
+        int initialDirtiness = pet.getDirtiness();
+        pet.clean();
+        int dirtinessAfterCleaning = pet.getDirtiness();
+
+        assertTrue(initialDirtiness>dirtinessAfterCleaning);
     }
 
     @Test
@@ -153,6 +181,7 @@ public class VirtualPetTest {
         String statusLine = testPet.returnPetStatus();
         assertThat(statusLine).isEqualTo("| Bosco      |   10   |   10   |    10   |");
     }
+
 }
 
 /* SPRINT 3

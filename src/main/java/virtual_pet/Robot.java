@@ -1,7 +1,7 @@
 package virtual_pet;
 
 public class Robot extends VirtualPet {
- private int charge = 100;
+    private int battery = 50;
     private int maintenanceLevel = 100;
 
 
@@ -9,13 +9,26 @@ public class Robot extends VirtualPet {
         super(name);
     }
 
-    public int getCharge() {
-        return charge;
+    public int getBatteryLevel() {
+        return battery;
     }
 
     public int getMaintenanceLevel() {
         return maintenanceLevel;
     }
+
+    public void chargeRobot() {
+        battery = battery +25;
+    }
+    @Override
+    public void tick(){
+        battery = battery - 5;
+        maintenanceLevel=maintenanceLevel-5;
+    }
+    public void performMaintenance(){
+        maintenanceLevel = 100;
+    }
+}
     /* Deliverables
 Support for 4 types of pets: Organic Cats, Organic Dogs, Robotic Cats, Robotic Dogs.
 Robots require oil and maintenance.
@@ -31,7 +44,7 @@ Robot Unicorn
 
 Robots traits
 -Charge
--Maintence
+-Maintenance
 
      */
-}
+

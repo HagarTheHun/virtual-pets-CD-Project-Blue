@@ -6,12 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RobotTest {
     @Test
-    public void shouldHaveDefaultCharge() {
+    public void shouldHaveDefaultBatteryLevel() {
         Robot underTest = new Robot("Ben");
 
-        int expected = underTest.getCharge();
+        int expected = underTest.getBatteryLevel();
 
-        assertEquals(expected, 100);
+        assertEquals(expected, 50);
     }
     @Test
     public void shouldHaveDefaultMaintenanceLevel() {
@@ -22,15 +22,41 @@ class RobotTest {
         assertEquals(expected, 100);
     }
     @Test
-    public void chargeCanNotBeNegative(){
+    public void doesTickDecreaseBatteryLevel(){
+        Robot underTest = new Robot("Ben");
+        int batteryLevelBeforeTick = underTest.getBatteryLevel();
+        underTest.tick();
+        int batteryLevelAfterTick = underTest.getBatteryLevel();
+        assertTrue(batteryLevelBeforeTick>batteryLevelAfterTick);
+
+    }
+    @Test
+    public void doesTickDecreaseMaintenanceLevel(){
+        Robot underTest = new Robot("Ben");
+        int maintenanceLevelBeforeTick = underTest.getMaintenanceLevel();
+        underTest.tick();
+        int maintenanceLevelAfterTick = underTest.getMaintenanceLevel();
+        assertTrue(maintenanceLevelBeforeTick>maintenanceLevelAfterTick);
+    }
+   @Test
+     public void doesChargePowerRobot(){
         Robot underTest = new Robot("Connor");
 
-      //  underTest.ch();
-        pet.feed();
+        underTest.chargeRobot();
 
-        int hungerAfterFeeding = pet.getHunger();
+        int batteryLevelAfterCharging = underTest.getBatteryLevel();
 
-        assertEquals(0, hungerAfterFeeding);
+        assertEquals(75, batteryLevelAfterCharging);
     }
+    @Test
+     public void doesPerformMaintenanceIncreaseMaintenanceLevel(){
+        Robot underTest = new Robot("Finn");
+        underTest.tick();
+        int maintenanceLevelBeforePerformingMaintenance = underTest.getMaintenanceLevel();
+        underTest.performMaintenance();
+        int maintenanceLevelAfterPerformingMaintenance = underTest.getMaintenanceLevel();
+        assertTrue(maintenanceLevelAfterPerformingMaintenance>maintenanceLevelBeforePerformingMaintenance);
 
+
+    }
 }

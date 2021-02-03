@@ -12,6 +12,7 @@ public class VirtualPet {
     private int boredom;
     private String color;
     private int thirst;
+    private int dirtiness;
 
 
 
@@ -22,6 +23,7 @@ public class VirtualPet {
         boredom = 10;
         color = "Red";
         thirst = 10;
+        dirtiness = 0;
     }
     public String getName() {
         return name;
@@ -39,11 +41,15 @@ public class VirtualPet {
     public String returnPetStatus() {
         return String.format("| %-10s |  %3d   |  %3d   |   %3d   |", this.getName(), this.getHunger(), this.getThirst(), this.getBoredom());
     }
+    public int getDirtiness(){
+        return dirtiness;
+    }
 
     public void tick() {
         hunger = hunger + 10;
         boredom = boredom + 10;
         thirst = thirst + 10;
+        dirtiness = dirtiness + 10;
     }
 
     public void feed(){
@@ -66,6 +72,16 @@ public class VirtualPet {
             thirst=0;
         }
     }
+
+    public void clean(){
+        dirtiness = 0;
+    }
+
+    public void setDirtiness(int number){
+        dirtiness = number;
+    }
+
+
 
 
 }
