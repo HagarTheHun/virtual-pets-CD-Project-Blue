@@ -44,12 +44,23 @@ public class VirtualPetShelter {
       return tableOfPets;
    }
 
-   public void feedAllPets(){ // broken
+   public void feedAllPets(){
      for (VirtualPet petToFeed : creatures.values()) {
         petToFeed.feed();} // need to iterate through map for shelter
      }
 
+   public void playWithAllPets() {
+      for (VirtualPet petToPlayWith: creatures.values()) {
+         petToPlayWith.play();
+      }
    }
+
+   public void giveWaterTohAllPets() {
+      for (VirtualPet petToGiveWater: creatures.values()){
+         petToGiveWater.water();
+      }
+   }
+}
 
 
 

@@ -64,8 +64,44 @@ public class VirtualPetShelterTest {
 
 
     }
-
     @Test
+    public void canPlayWithAllPetsInShelter() {
+        VirtualPet underTest1 = new VirtualPet("John");
+        VirtualPet underTest2 = new VirtualPet("Jane");
+        VirtualPetShelter shelter = new VirtualPetShelter("The Haven");
+
+        shelter.takeIn(underTest1);
+        shelter.takeIn(underTest2);
+
+        int beforePlay1 = underTest1.getBoredom();
+        int beforePlay2 = underTest2.getBoredom();
+
+        shelter.playWithAllPets();
+
+        assertTrue(beforePlay1 > underTest1.getBoredom());
+        assertTrue(beforePlay2 > underTest2.getBoredom());
+    }
+    @Test
+    public void giveWaterToAllPetsInShelter() {
+        VirtualPet underTest1 = new VirtualPet("John");
+        VirtualPet underTest2 = new VirtualPet("Jane");
+        VirtualPetShelter shelter = new VirtualPetShelter("The Haven");
+
+        shelter.takeIn(underTest1);
+        shelter.takeIn(underTest2);
+
+        int beforeGivenWater1 = underTest1.getThirst();
+        int beforeGivenWater2 = underTest2.getThirst();
+
+        shelter.giveWaterTohAllPets();
+
+        assertTrue(beforeGivenWater1 > underTest1.getThirst());
+        assertTrue(beforeGivenWater2 > underTest2.getThirst());
+
+
+    }
+
+        @Test
     public void canSeeEntireShelter() {
         VirtualPetShelter testShelter = new VirtualPetShelter("The Haven");
         VirtualPet underTest1 = new VirtualPet("John");
