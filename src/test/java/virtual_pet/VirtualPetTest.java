@@ -181,7 +181,12 @@ public class VirtualPetTest {
         String statusLine = testPet.returnPetStatus();
         assertThat(statusLine).isEqualTo("| Bosco      |   10   |   10   |    10   |");
     }
-
+    @Test
+    public void doesChangeColor() {
+        VirtualPet testPet = new VirtualPet("Bosco");
+        testPet.setColor("Blue");
+        assertEquals("Blue",testPet.getColor());
+    }
 }
 
 /* SPRINT 3

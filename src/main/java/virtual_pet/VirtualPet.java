@@ -82,8 +82,9 @@ public class VirtualPet {
     }
 
 
-
-
+    public void setColor(String petColor) {
+        color = petColor;
+    }
 }
 
 
