@@ -2,10 +2,6 @@ package virtual_pet;
 
 import java.util.Scanner;
 
-
-
-
-
 public class VirtualPet {
     private String name;
     private int hunger;
@@ -13,8 +9,7 @@ public class VirtualPet {
     private String color;
     private int thirst;
     private int dirtiness;
-
-
+    protected boolean canFly = false;
 
 
     public VirtualPet (String name) {
@@ -38,7 +33,13 @@ public class VirtualPet {
     public String getColor() {
         return color;
     }
+
+    public boolean returnCanFly() {
+        return canFly;
+    }
+
     public String returnPetStatus() {
+        this.tick();
         return String.format("| %-10s |  %3d   |  %3d   |   %3d   |", this.getName(), this.getHunger(), this.getThirst(), this.getBoredom());
     }
     public int getDirtiness(){

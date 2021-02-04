@@ -45,8 +45,46 @@ public class Application {
         System.out.println("You made " + firstPet.getName() +" into a " + firstPetKind + "!");
         System.out.println("Hey, what color do you want " + firstPet.getName() + " to be?\nRed\nOrange\nYellow\nGreen\nBlue\nIndigo\nViolet");
         String firstPetColor = keyboard.next();
-        firstPet.setColor(firstPetColor);
+        firstPet.setColor(firstPetColor); // TODO: 2/4/2021 make color limited
         System.out.println("You made " + firstPet.getName() + " " + firstPet.getColor());
+
+        VirtualPetShelter home = new VirtualPetShelter("Home");
+        home.takeIn(firstPet);
+
+        System.out.println("Would you like to interact with your new pet or visit a Shelter full of creatures?\n1. Interact with my pet\n2. Goto Shelter");
+        String playOrShelter = keyboard.next();
+        if (playOrShelter.equals("1")) {
+            //play with pet
+            System.out.println(home.returnAllPets());
+            if(firstPet.returnCanFly()) {
+                System.out.println("Would you like to: 1. Play   2. Feed\n3. Water  4. Fly");
+                switch (keyboard.next()) {
+                    case "1":
+                        firstPet.play();
+                        System.out.println("" + firstPet.getName() + " chases the ball! Good throw!");
+                        break;
+                    case "2":
+                        firstPet.feed();
+                        System.out.println("" + firstPet.getName() + " eats the food sloppily! Stand clear.");
+                        break;
+                    case "3":
+                        firstPet.water();
+                        System.out.println("" + firstPet.getName() + " drinks daintily. How posh.");
+                        break;
+                    case "4":
+                        firstPet.fly();
+                }
+
+            }
+
+        } else if (playOrShelter.equals("2")) {
+            //generate shelter with 3 pets
+        } else {
+            System.out.println("Do you want to interact with your pet or got to a new Shelter?\n1. Interact with my pet\n2. Goto Shelter");
+            playOrShelter = keyboard.next();
+        }
+
+
     //select color
     //make help option
 

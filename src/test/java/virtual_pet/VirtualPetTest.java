@@ -179,7 +179,7 @@ public class VirtualPetTest {
     public void canReturnPetStatus () {
         VirtualPet testPet = new VirtualPet("Bosco");
         String statusLine = testPet.returnPetStatus();
-        assertThat(statusLine).isEqualTo("| Bosco      |   10   |   10   |    10   |");
+        assertThat(statusLine).isEqualTo("| Bosco      |   20   |   20   |    20   |");
     }
     @Test
     public void doesChangeColor() {

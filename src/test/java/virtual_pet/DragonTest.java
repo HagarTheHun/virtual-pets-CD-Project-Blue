@@ -8,6 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class DragonTest {
 
     @Test
+    public void canFlyIsTrue() {
+        Dragon testPet = new Dragon("Tim");
+        assertTrue(testPet.returnCanFly());
+    }
+
     public void effectsOfFly(){
         Dragon underTest = new Dragon("Marceline");
         int dirtinessBeforeFlight = underTest.getDirtiness();
