@@ -29,6 +29,11 @@ public class Application {
                     shelter.playWithAllPets();
                     System.out.println("Everyone is happier!");
                     break;
+                case "11"://play with single animal
+                    String tempName;
+                    System.out.println("Which one?" + shelter.creatures.keySet());
+                    tempName = keyboard.next();
+                    
                 case "2":
                     shelter.giveWaterTohAllPets();
                     System.out.println("Everyone's thirst has decreased.");
