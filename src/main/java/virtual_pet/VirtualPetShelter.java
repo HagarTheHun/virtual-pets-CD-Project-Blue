@@ -36,7 +36,7 @@ public class VirtualPetShelter {
    }
 
    public String viewShelterStatus() {
-      String header = "| NAME       | HUNGER | THIRST | BOREDOM |\n";
+      String header = "| NAME       | HUNGER | THIRST | BOREDOM | BATTERY | MAINT. |  DIRT  |\n";
       String tableOfPets = header;
       for (VirtualPet toAddToTable : creatures.values()) {
          tableOfPets = tableOfPets + toAddToTable.returnPetStatus() + "\n";

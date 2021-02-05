@@ -40,7 +40,7 @@ public class VirtualPet {
 
     public String returnPetStatus() {
         this.tick();
-        return String.format("| %-10s |  %3d   |  %3d   |   %3d   |", this.getName(), this.getHunger(), this.getThirst(), this.getBoredom());
+        return String.format("| %-10s |  %3d   |  %3d   |   %3d   |   %3d   |   %3d  |  %3d   |", this.getName(), this.getHunger(), this.getThirst(), this.getBoredom(), 0, 0, this.getDirtiness());
     }
     public int getDirtiness(){
         return dirtiness;
