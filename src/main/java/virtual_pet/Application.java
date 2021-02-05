@@ -3,102 +3,112 @@ package virtual_pet;
 import java.util.Scanner;
 
 public class Application {
+
     public static void main(String[] args) {
+        VirtualPetShelter shelter = new VirtualPetShelter("The Haven");
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("Welcome to Virtual Pet: Mythical Edition \n Name your first pet!");
-        String petName = keyboard.next();
-        System.out.println("You named it " + petName);
+        System.out.println("Welcome to Virtual Pet: Mythical Edition");
+        Dragon defaultDragon = new Dragon("Pete");
+        shelter.takeIn(defaultDragon);
+        RobotDragon defaultRobotDragon = new RobotDragon("Puff");
+        shelter.takeIn(defaultRobotDragon);
+        Unicorn defaultUnicorn = new Unicorn("Amalthea");
+        shelter.takeIn(defaultUnicorn);
+        RobotUnicorn defaultRobotUnicorn = new RobotUnicorn("Merlin");
+        shelter.takeIn(defaultRobotUnicorn);
 
-    //Switch case to select species/organic
+        boolean quit = false;
 
-        System.out.println("Select a one of the following:\n1.Unicorn\n2.RobotUnicorn\n3.Dragon\n4.RobotDragon");
-        boolean petMade = false;
-        VirtualPet firstPet = new VirtualPet(petName);
-        String firstPetKind = "";
-        while (!petMade) {
-            int species = keyboard.nextInt();
-            switch (species) {
-                case 1:
-                    firstPet = new Unicorn(petName);
-                    petMade = true;
-                    firstPetKind = "Unicorn";
+
+        //Switch case to select species/organic
+        do {
+            System.out.println("Make a selection: \n1. Play with animals\n2. Water organic animals \n3. Feed organic animals\n4. Clean organic animals\n5. Fly Dragons\n6. Charge robots \n7. Perform maintenance on robots \n8. Adopt an animal \n9. Create a new animal \n10. View Shelter \n11. Quit");
+            String selection = keyboard.next();
+            switch (selection) {
+                case "1":
+                    shelter.playWithAllPets();
+                    System.out.println("Everyone is happier!");
                     break;
-                case 3:
-                    firstPet = new Dragon(petName);
-                    firstPetKind = "Dragon";
-                    petMade = true;
+                case "2":
+                    shelter.giveWaterTohAllPets();
+                    System.out.println("Everyone's thirst has decreased.");
                     break;
-                case 2:
-                    firstPet = new RobotUnicorn(petName);
-                    firstPetKind = "RobotUnicorn";
-                    petMade = true;
+                case "3":
+                    shelter.feedAllPets();
+                    System.out.println("Everyone is less hungry!");
                     break;
-                case 4:
-                    firstPet = new RobotDragon(petName);
-                    firstPetKind = "RobotDragon";
-                    petMade = true;
+                case "4":
+                    shelter.cleanAllPets();
+                    System.out.println("Everyone is clean!");
+                    break;
+                case "5":
+                    shelter.flyDragons();
+                    System.out.println("The dragons went for a fly!");
+                    break;
+                case "6":
+                    shelter.chargeAllRobots();
+                    System.out.println("All robots are charged.");
+                    break;
+                case "7":
+                    shelter.maintainAllRobots();
+                    System.out.println("All robots have gone through maintenance.");
+                    break;
+                case "8":
+                    System.out.print("Which pet would you like to adopt? Type in their name.");
+                    System.out.println(shelter.viewShelterStatus());
+                    String petToAdopt = keyboard.next();
+                    shelter.adoptPet(petToAdopt);
+                    System.out.println("You have adopted " + petToAdopt);
+                    break;
+                case "9":
+                    System.out.println("Select a one of the following:\n1.Unicorn\n2.RobotUnicorn\n3.Dragon\n4.RobotDragon");
+                    int species = keyboard.nextInt();
+                    switch (species) {
+                        case 1:
+                            System.out.println("Name your pet");
+                            String unicornName = keyboard.next();
+                            System.out.println("You named your unicorn " + unicornName);
+                            Unicorn orgUnicorn = new Unicorn(unicornName);
+                            shelter.takeIn(orgUnicorn);
+                            break;
+                        case 2:
+                            System.out.println("Name your pet");
+                            String roboUnicornName = keyboard.next();
+                            System.out.println("You named your robot unicorn " + roboUnicornName);
+                            RobotUnicorn roboUnicorn = new RobotUnicorn(roboUnicornName);
+                            shelter.takeIn(roboUnicorn);
+                            break;
+                        case 3:
+                            System.out.println("Name your pet");
+                            String dragonName = keyboard.next();
+                            System.out.println("You named your dragon " + dragonName);
+                            Dragon orgDragon = new Dragon(dragonName);
+                            shelter.takeIn(orgDragon);
+                            break;
+                        case 4:
+                            System.out.println("Name your pet");
+                            String roboDragonName = keyboard.next();
+                            System.out.println("You named your robot dragon " + roboDragonName);
+                            RobotDragon roboDragon = new RobotDragon(roboDragonName);
+                            shelter.takeIn(roboDragon);
+                            break;
+                    }
+                    break;
+                case "10":
+                    System.out.println(shelter.viewShelterStatus());
+                    break;
+                case "11":
+                    System.out.println("Goodbye!");
+                    System.exit(0);
                     break;
                 default:
-                    System.out.println("Please type either Unicorn, RobotUnicorn, Dragon, or RobotDragon");
-            }
-        }
-        System.out.println("You made " + firstPet.getName() +" into a " + firstPetKind + "!");
-        System.out.println("Hey, what color do you want " + firstPet.getName() + " to be?\nRed\nOrange\nYellow\nGreen\nBlue\nIndigo\nViolet");
-        String firstPetColor = keyboard.next();
-        firstPet.setColor(firstPetColor); // TODO: 2/4/2021 make color limited
-        System.out.println("You made " + firstPet.getName() + " " + firstPet.getColor());
-
-        VirtualPetShelter home = new VirtualPetShelter("Home");
-        home.takeIn(firstPet);
-
-        System.out.println("Would you like to interact with your new pet or visit a Shelter full of creatures?\n1. Interact with my pet\n2. Goto Shelter");
-        String playOrShelter = keyboard.next();
-        if (playOrShelter.equals("1")) {
-            //play with pet
-            System.out.println(home.returnAllPets());
-            if(firstPet.returnCanFly()) {
-                System.out.println("Would you like to: 1. Play   2. Feed\n3. Water  4. Fly");
-                switch (keyboard.next()) {
-                    case "1":
-                        firstPet.play();
-                        System.out.println("" + firstPet.getName() + " chases the ball! Good throw!");
-                        break;
-                    case "2":
-                        firstPet.feed();
-                        System.out.println("" + firstPet.getName() + " eats the food sloppily! Stand clear.");
-                        break;
-                    case "3":
-                        firstPet.water();
-                        System.out.println("" + firstPet.getName() + " drinks daintily. How posh.");
-                        break;
-                    case "4":
-                        firstPet.fly();
-                }
+                    System.out.println("Please make a valid selection");
 
             }
 
-        } else if (playOrShelter.equals("2")) {
-            //generate shelter with 3 pets
-        } else {
-            System.out.println("Do you want to interact with your pet or got to a new Shelter?\n1. Interact with my pet\n2. Goto Shelter");
-            playOrShelter = keyboard.next();
-        }
+
+        } while (!quit);
 
 
-    //select color
-    //make help option
-
-   // public void shelterTable() {
-           // System.out.println();
-
-
-       // }
-
-// make a table
-        //Generate Shelter, Virtual pet shelter
-        //can make first pet, or go to the shelter
-        //creature.put()
-        //DO you want to adopt or create a pet
     }
-
 }
