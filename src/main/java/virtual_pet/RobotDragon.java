@@ -9,6 +9,7 @@ public class RobotDragon extends Robot implements Flyable {
     public void fly(){
         this.tick();
         this.tick();
+        this.play();
     }
 
     @Override

@@ -1,7 +1,7 @@
 package virtual_pet;
 
 public class Robot extends VirtualPet {
-    private int battery = 50;
+    private int battery = 100;
     private int maintenanceLevel = 100;
     private int boredom = 10;
 
@@ -20,12 +20,15 @@ public class Robot extends VirtualPet {
 
     public void chargeRobot() {
         battery = battery +25;
+        if (battery>100) {
+            battery=100;
+        }
     }
     @Override
     public void tick(){
         battery = battery - 5;
         maintenanceLevel=maintenanceLevel-5;
-        boredom+=10;
+        boredom= boredom + 10;
         }
     public void performMaintenance(){
         maintenanceLevel = 100;
@@ -33,8 +36,24 @@ public class Robot extends VirtualPet {
     @Override
     public String returnPetStatus(){
         this.tick();
-        return String.format("| %-10s |  %3d   |  %3d   |   %3d   |   %3d   |   %3d  |  %3d   |", this.getName(), 0, 0, this.getBoredom(), this.getBatteryLevel(), this.getMaintenanceLevel(), 0);
+        return String.format("| %-10s |  %3s   |  %3s   |   %3d   |   %3d   |   %3d  |  %3s   |", this.getName(), "N/A", "N/A", this.getBoredom(), this.getBatteryLevel(), this.getMaintenanceLevel(), "N/A");
     }
+    @Override
+    public void play() {
+        boredom = boredom - 25;
+        if (boredom<0){
+            boredom=0;
+        }
+        battery = battery - 5;
+        maintenanceLevel=maintenanceLevel-5;
+    }
+
+    @Override //But it already had a getBoredom?? and they are the same!!!
+    public int getBoredom(){
+        return boredom;
+    }
+
+
 }
     /* Deliverables
 Support for 4 types of pets: Organic Cats, Organic Dogs, Robotic Cats, Robotic Dogs.

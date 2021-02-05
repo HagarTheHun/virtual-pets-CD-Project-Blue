@@ -22,7 +22,7 @@ public class Application {
 
         //Switch case to select species/organic
         do {
-            System.out.println("Make a selection: \n1. Play with animals\n2. Water organic animals \n3. Feed organic animals\n4. Clean organic animals\n5. Fly Dragons\n6. Charge robots \n7. Perform maintenance on robots \n8. Adopt an animal \n9. Create a new animal \n10. View Shelter \n11. Quit");
+            System.out.println(shelter.viewShelterStatus() + "\nMake a selection: \n1. Play with animals\n2. Water organic animals \n3. Feed organic animals\n4. Clean organic animals\n5. Fly Dragons\n6. Charge robots \n7. Perform maintenance on robots \n8. Adopt an animal \n9. Create a new animal \n10. Quit");
             String selection = keyboard.next();
             switch (selection) {
                 case "1":
@@ -95,9 +95,6 @@ public class Application {
                     }
                     break;
                 case "10":
-                    System.out.println(shelter.viewShelterStatus());
-                    break;
-                case "11":
                     System.out.println("Goodbye!");
                     System.exit(0);
                     break;

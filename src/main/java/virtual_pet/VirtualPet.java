@@ -40,7 +40,7 @@ public class VirtualPet {
 
     public String returnPetStatus() {
         this.tick();
-        return String.format("| %-10s |  %3d   |  %3d   |   %3d   |   %3d   |   %3d  |  %3d   |", this.getName(), this.getHunger(), this.getThirst(), this.getBoredom(), 0, 0, this.getDirtiness());
+        return String.format("| %-10s |  %3d   |  %3d   |   %3d   |   %3s   |   %3s  |  %3d   |", this.getName(), this.getHunger(), this.getThirst(), this.getBoredom(), "N/A", "N/A", this.getDirtiness());
     }
     public int getDirtiness(){
         return dirtiness;
@@ -54,28 +54,28 @@ public class VirtualPet {
     }
 
     public void feed(){
-        hunger = hunger - 10;
+        hunger = hunger - 25;
         if (hunger<0){
             hunger =0;
         }
     }
 
     public void play(){
-        boredom = boredom - 10;
+        boredom = boredom - 25;
         if (boredom<0){
             boredom=0;
         }
     }
 
     public void water(){
-        thirst = thirst - 10;
+        thirst = thirst - 25;
         if (thirst<0){
             thirst=0;
         }
     }
 
     public void clean(){
-        dirtiness = 0;
+        dirtiness = -10;
     }
 
     public void setDirtiness(int number){

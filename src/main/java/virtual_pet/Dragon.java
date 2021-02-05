@@ -11,6 +11,7 @@ public class Dragon extends VirtualPet implements Flyable{
     public void fly() {
         int dirtinessBeforeFlight = this.getDirtiness();
         this.tick();
+        this.play();
         this.setDirtiness(dirtinessBeforeFlight);
     }
 
